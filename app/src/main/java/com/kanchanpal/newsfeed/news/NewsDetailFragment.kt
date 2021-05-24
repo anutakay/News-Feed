@@ -10,14 +10,14 @@ import com.kanchanpal.newsfeed.databinding.FragmentNewsDetailBinding
 
 class NewsDetailFragment : Fragment() {
 
-    private val args : NewsDetailFragmentArgs by navArgs()
+    private val args: NewsDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentNewsDetailBinding.inflate(inflater,container,false)
+        val binding = FragmentNewsDetailBinding.inflate(inflater, container, false)
         binding.ivBack.setOnClickListener {
             activity?.supportFragmentManager?.popBackStack()
         }

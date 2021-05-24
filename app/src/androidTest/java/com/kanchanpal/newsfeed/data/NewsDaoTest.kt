@@ -23,7 +23,8 @@ class NewsDaoTest : DbTest() {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Before fun createDb() {
+    @Before
+    fun createDb() {
         newsDao = db.getNewsListDao()
 
         // Insert legoSets in non-alphabetical order to test that results are sorted by name
@@ -32,7 +33,8 @@ class NewsDaoTest : DbTest() {
         }
     }
 
-    @Test fun testGetSets() {
+    @Test
+    fun testGetSets() {
         val list = getValue(newsDao.getNews())
         assertThat(list.size, equalTo(2))
 

@@ -42,8 +42,10 @@ class NewsRepositoryTest {
     @Test
     fun loadNewsFromNetwork() {
         runBlocking {
-            repository.observePagedNews(connectivityAvailable = true,
-                     coroutineScope = coroutineScope)
+            repository.observePagedNews(
+                connectivityAvailable = true,
+                coroutineScope = coroutineScope
+            )
 
             verify(dao, never()).getPagedNews()
             verifyZeroInteractions(dao)

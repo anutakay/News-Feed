@@ -22,16 +22,16 @@ class NewsListFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: NewsViewModel
-    private var isConnected : Boolean = true
-    private lateinit var  binding : FragmentNewsListBinding
-    val newsViewModel : NewsViewModel by viewModels { viewModelFactory }
+    private var isConnected: Boolean = true
+    private lateinit var binding: FragmentNewsListBinding
+    val newsViewModel: NewsViewModel by viewModels { viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewsListBinding.inflate(inflater,container,false)
+        binding = FragmentNewsListBinding.inflate(inflater, container, false)
         context ?: return binding.root
         return binding.root
     }
@@ -41,7 +41,11 @@ class NewsListFragment : Fragment(), Injectable {
         viewModel = injectViewModel(viewModelFactory)
         isConnected = ConnectivityUtil.isConnected(context)
         if (!isConnected)
-            Toast.makeText(context?.applicationContext,"No internet connection!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context?.applicationContext,
+                "No internet connection!",
+                Toast.LENGTH_SHORT
+            ).show()
 
         val adapter = NewsAdapter()
         binding.rvNewsList.adapter = adapter
@@ -51,7 +55,7 @@ class NewsListFragment : Fragment(), Injectable {
     private fun subscribeUI(adapter: NewsAdapter) {
         val data = viewModel.newsList(isConnected)
         data?.networkState?.observe(viewLifecycleOwner, Observer {
-            when(it.status) {
+            when (it.status) {
                 Status.RUNNING -> {
                     progressBar.visibility = View.VISIBLE
                 }

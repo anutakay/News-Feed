@@ -20,7 +20,7 @@ abstract class DbTest {
     fun initDb() {
         _db = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
-                AppDatabase::class.java
+            AppDatabase::class.java
         ).build()
     }
 

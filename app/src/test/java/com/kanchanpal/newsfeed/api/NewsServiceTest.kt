@@ -75,8 +75,10 @@ class NewsServiceTest {
         for ((key, value) in headers) {
             mockResponse.addHeader(key, value)
         }
-        mockWebServer.enqueue(mockResponse.setBody(
-            source.readString(Charsets.UTF_8))
+        mockWebServer.enqueue(
+            mockResponse.setBody(
+                source.readString(Charsets.UTF_8)
+            )
         )
     }
 }

@@ -17,10 +17,11 @@ data class NewsListResponse(
     private var status: String? = null,
     @Expose
     @SerializedName("articles")
-    internal var articles: List<NewsListModel>) : Serializable
+    internal var articles: List<NewsListModel>
+) : Serializable
 
 @Entity
-data class NewsListModel  (
+data class NewsListModel(
 
     @PrimaryKey
     @Expose
@@ -42,7 +43,8 @@ data class NewsListModel  (
     @SerializedName("publishedAt")
     var publishedAt: String? = null,
 
-    @Embedded @SerializedName("source") val source : Source? = null ) : Serializable
+    @Embedded @SerializedName("source") val source: Source? = null
+) : Serializable
 
 data class Source(
     @SerializedName("id")

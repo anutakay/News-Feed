@@ -6,15 +6,14 @@
 
         <shape android:shape="oval">
 
-            <corners android:radius="8dp"  />
+            <corners android:radius="8dp" />
 
-            <solid android:color="@color/colorTranslucent"/>
+            <solid android:color="@color/colorTranslucent" />
             <stroke android:color="@color/colorTranslucent" />
 
         </shape>
 
     </item>
-
 
 
 </selector>

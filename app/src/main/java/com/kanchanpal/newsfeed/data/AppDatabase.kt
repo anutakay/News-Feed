@@ -12,8 +12,10 @@ import com.kanchanpal.newsfeed.data.dao.NewsDao
 /**
  * The Room database for this app
  */
-@Database(entities = [NewsListModel::class],
-        version = 1, exportSchema = false)
+@Database(
+    entities = [NewsListModel::class],
+    version = 1, exportSchema = false
+)
 @TypeConverters()
 abstract class AppDatabase : RoomDatabase() {
 
@@ -34,11 +36,11 @@ abstract class AppDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context): AppDatabase {
 
             return Room.databaseBuilder(context, AppDatabase::class.java, "news-db")
-                    .addCallback(object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                        }
-                    }).build()
+                .addCallback(object : RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                    }
+                }).build()
         }
     }
 }
