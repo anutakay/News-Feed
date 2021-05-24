@@ -1,16 +1,16 @@
 package com.kanchanpal.newsfeed
 
-import android.app.Activity
 import android.app.Application
-import com.kanchanpal.newsfeed.di.AppInjector
 import com.facebook.stetho.Stetho
+import com.kanchanpal.newsfeed.di.AppInjector
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class NewsApp : Application(), HasActivityInjector {
+class NewsApp : Application(), HasAndroidInjector {
     @Inject
-    public lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -20,5 +20,5 @@ class NewsApp : Application(), HasActivityInjector {
         AppInjector.init(this)
     }
 
-    override fun activityInjector() = dispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }
