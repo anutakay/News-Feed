@@ -13,7 +13,9 @@
             app:argType="com.kanchanpal.newsfeed.api.NewsListModel" />
         <action
             android:id="@+id/action_newsListFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
+            app:destination="@id/newsDetailFragment"
+            app:popUpTo="@id/newsDetailFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"

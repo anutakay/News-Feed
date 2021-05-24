@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.kanchanpal.newsfeed.databinding.FragmentNewsDetailBinding
 
@@ -16,11 +17,9 @@ class NewsDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentNewsDetailBinding.inflate(inflater, container, false)
-        binding.ivBack.setOnClickListener {
-            activity?.supportFragmentManager?.popBackStack()
-        }
+        binding.ivBack.setOnClickListener { findNavController().navigateUp() }
         val newsModel = args.newsItem
         binding.newsDetail = newsModel
         return binding.root
