@@ -7,9 +7,13 @@ import com.kanchanpal.newsfeed.api.NewsListModel
 
 val title = "Title1"
 
-val testNewsA = NewsListModel("Title1", "UrlToImage1", "Description1",
-        "Author1",  "url1", "publishedAt1")
+val testNewsA = NewsListModel(
+    "Title1", "UrlToImage1", "Description1",
+    "Author1", "url1", "publishedAt1"
+)
 
-val testNewsB = NewsListModel("Title2", "UrlToImage2", "Description2",
-        "Author2", "url2", "publishedAt2")
+val testNewsB = NewsListModel(
+    "Title2", "UrlToImage2", "Description2",
+    "Author2", "url2", "publishedAt2"
+)
 

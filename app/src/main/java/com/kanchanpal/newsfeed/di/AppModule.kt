@@ -18,14 +18,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideNewsService(@NewsApi okhttpClient: OkHttpClient,
-            converterFactory: GsonConverterFactory
+    fun provideNewsService(
+        @NewsApi okhttpClient: OkHttpClient,
+        converterFactory: GsonConverterFactory
     ) = provideService(okhttpClient, converterFactory, NewsService::class.java)
 
     @Singleton
     @Provides
-    fun provideNewsRemoteDataSource(newsService: NewsService)
-            = NewsRemoteDataSource(newsService)
+    fun provideNewsRemoteDataSource(newsService: NewsService) = NewsRemoteDataSource(newsService)
 
     @NewsApi
     @Provides
@@ -50,18 +50,20 @@ class AppModule {
 
 
     private fun createRetrofit(
-            okhttpClient: OkHttpClient,
-            converterFactory: GsonConverterFactory
+        okhttpClient: OkHttpClient,
+        converterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(NewsService.ENDPOINT)
-                .client(okhttpClient)
-                .addConverterFactory(converterFactory)
-                .build()
+            .baseUrl(NewsService.ENDPOINT)
+            .client(okhttpClient)
+            .addConverterFactory(converterFactory)
+            .build()
     }
 
-    private fun <T> provideService(okhttpClient: OkHttpClient,
-            converterFactory: GsonConverterFactory, clazz: Class<T>): T {
+    private fun <T> provideService(
+        okhttpClient: OkHttpClient,
+        converterFactory: GsonConverterFactory, clazz: Class<T>
+    ): T {
         return createRetrofit(okhttpClient, converterFactory).create(clazz)
     }
 }

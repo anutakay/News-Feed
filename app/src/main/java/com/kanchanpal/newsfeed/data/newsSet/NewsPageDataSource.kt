@@ -30,6 +30,7 @@ class NewsPageDataSource @Inject constructor(
             callback.onResult(it, null, 2)
         }
     }
+
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, NewsListModel>) {
         networkState.postValue(NetworkState.LOADING)
         val page = params.key

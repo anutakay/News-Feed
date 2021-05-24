@@ -1,8 +1,8 @@
 package com.kanchanpal.newsfeed.di
 
-import com.kanchanpal.newsfeed.BuildConfig
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.kanchanpal.newsfeed.BuildConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -20,13 +20,13 @@ class CoreDataModule {
 
     @Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
-            OkHttpClient.Builder().addInterceptor(interceptor)
-                    .addNetworkInterceptor(StethoInterceptor())
-                    .build()
+        OkHttpClient.Builder().addInterceptor(interceptor)
+            .addNetworkInterceptor(StethoInterceptor())
+            .build()
 
     @Provides
     fun provideLoggingInterceptor() =
-            HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BODY else NONE }
+        HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BODY else NONE }
 
     @Provides
     @Singleton
@@ -35,5 +35,5 @@ class CoreDataModule {
     @Provides
     @Singleton
     fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory =
-            GsonConverterFactory.create(gson)
+        GsonConverterFactory.create(gson)
 }

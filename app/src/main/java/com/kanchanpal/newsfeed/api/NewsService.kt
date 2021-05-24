@@ -9,9 +9,10 @@ interface NewsService {
     @GET("/v2/everything")
     suspend fun getTopNewsList(
 
-        @Query("apiKey") apiKey: String? = null, @Query("page") page : Int? = null,
-        @Query("pageSize") pageSize : Int? = null,
-        @Query("q") source: String? = null): Response<NewsListResponse>
+        @Query("apiKey") apiKey: String? = null, @Query("page") page: Int? = null,
+        @Query("pageSize") pageSize: Int? = null,
+        @Query("q") source: String? = null
+    ): Response<NewsListResponse>
 
     companion object {
         const val ENDPOINT = "https://newsapi.org/"

@@ -11,10 +11,10 @@ import com.kanchanpal.newsfeed.api.NewsListModel
 @Dao
 interface NewsDao {
     @Query("Select * from NewsListModel")
-    fun getNews() : LiveData<List<NewsListModel>>
+    fun getNews(): LiveData<List<NewsListModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     suspend fun insertAll(newsList: List<NewsListModel>)
+    suspend fun insertAll(newsList: List<NewsListModel>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(news: NewsListModel)
