@@ -5,6 +5,8 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Okio
+import okio.buffer
+import okio.source
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.After
 import org.junit.Assert.assertNotNull
@@ -70,7 +72,7 @@ class NewsServiceTest {
     private fun enqueueResponse(fileName: String, headers: Map<String, String> = emptyMap()) {
         val inputStream = javaClass.classLoader
             ?.getResourceAsStream("api-response/$fileName")
-        val source = Okio.buffer(Okio.source(inputStream))
+        val source = inputStream!!.source().buffer()
         val mockResponse = MockResponse()
         for ((key, value) in headers) {
             mockResponse.addHeader(key, value)
